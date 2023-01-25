@@ -1,47 +1,34 @@
-import discord
-import random
-import os
 
-numbers = '1234567890'
+import os
+import random
+import discord
+from discord.ext import commands
+
 letters = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'
 
 intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='!generuj ', intents=intents)
 
-client = discord.Client(intents=intents)
 
-
-@client.event
+@bot.event
 async def on_ready():
-  print(f'We have logged in as {client.user}')
-  botactivity = discord.Activity(
-    type=discord.ActivityType.playing,
-    name="!generuj NITRO",
-  )
-  await client.change_presence(activity=botactivity,
-                               status=discord.Status.do_not_disturb)
+    print(f"Logged in as {bot.user}") 
+    botactivity = discord.Activity(type=discord.ActivityType.playing, name="!generuj NITRO",)
+  await client.change_presence(activity=botactivity, status=discord.Status.do_not_disturb)
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
 
-
-@client.event
-async def on_message(message):
-  if message.author == client.user:
-    return
-
-  if message.content.startswith('!ping'):
-    ping = str(round(client.latency * 1000))
-    embed_ping = discord.Embed(title='Pong!',
-                               description='Ping wynosi ' + ping + 'ms')
-    await message.channel.send(embed=embed_ping)
-
-  if message.content.startswith('!generuj NITRO'):
-    if message.channel.id != '1067490336177397780':
+@bot.command()
+async def NITRO(ctx):
+    if ctx.channel.id != '1067490336177397780':
       await message.channel.send(':x: Niepoprawny kanał.')
     else:
       nitro = "".join(random.choices(letters, k=16))
       link = 'discord.gift/' + nitro
-      embed_nitro = discord.Embed(
-        title='Pomyślnie wygenerowano Discord Nitro!',
-        description='Twój kod: ||' + link + '||')
-      await message.channel.send(embed=embed_nitro)
-      return
+      embed_nitro = discord.Embed(title='Pomyślnie wygenerowano Discord Nitro!', description='Twój kod: ||' + link + '||')
+      await ctx.send(embed=embed_nitro)
 
-client.run(os.environ.get('DICORD_TOKEN'))
+
+bot.run(os.environ["DISCORD_TOKEN"])
