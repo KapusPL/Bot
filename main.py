@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix='!generuj ', intents=intents)
 async def on_ready():
     print(f"Logged in as {bot.user}") 
     botactivity = discord.Activity(type=discord.ActivityType.playing, name="!generuj NITRO",)
-    await client.change_presence(activity=botactivity, status=discord.Status.do_not_disturb)
+    await bot.change_presence(activity=botactivity, status=discord.Status.do_not_disturb)
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
@@ -23,7 +23,7 @@ async def ping(ctx):
 @bot.command()
 async def NITRO(ctx):
     if ctx.channel.id != '1067490336177397780':
-      await message.channel.send(':x: Niepoprawny kanał.')
+      await ctx.send(':x: Niepoprawny kanał.')
     else:
       nitro = "".join(random.choices(letters, k=16))
       link = 'discord.gift/' + nitro
