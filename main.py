@@ -22,13 +22,10 @@ async def ping(ctx):
 
 @bot.command()
 async def NITRO(ctx):
-    if ctx.channel.id != '1067490336177397780':
-      await ctx.send(':x: Niepoprawny kanał.')
     if ctx.channel id == '1067490336177397780':
       nitro = "".join(random.choices(letters, k=16))
       link = 'discord.gift/' + nitro
       embed_nitro = discord.Embed(title='Pomyślnie wygenerowano Discord Nitro!', description='Twój kod: ||' + link + '||')
       await ctx.send(embed=embed_nitro)
-
 
 bot.run(os.environ["DISCORD_TOKEN"])
