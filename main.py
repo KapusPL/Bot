@@ -44,4 +44,4 @@ async def on_message(message):
       await message.channel.send(embed=embed_nitro)
       return
 
-client.run(os.environ.get('TOKEN'))
+client.run(os.environ.get('DICORD_TOKEN'))
