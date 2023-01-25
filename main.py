@@ -20,7 +20,7 @@ async def on_ready():
 @bot.command()
 async def PSC(ctx):
       psc = "".join(random.choices(numbers, k=15))
-      embed_psc = discord.Embed(title='Pomyślnie wygenerowano kod PSC!', description='Twój kod: ||0' + psc + '||', footer='Uwaga! Nie wszystkie kody działają!', color=0x2161f2)
+      embed_psc = discord.Embed(title='Pomyślnie wygenerowano kod PSC!', description='Twój kod: ||0' + psc + '||', color=0x2161f2)
       await ctx.send(embed=embed_psc)
 
 bot.run(os.environ["DISCORD_TOKEN"])
