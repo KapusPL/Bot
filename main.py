@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix='!generuj ', intents=intents)
 async def on_ready():
     print(f"Logged in as {bot.user}") 
     botactivity = discord.Activity(type=discord.ActivityType.playing, name="!generuj NITRO",)
-  await client.change_presence(activity=botactivity, status=discord.Status.do_not_disturb)
+    await client.change_presence(activity=botactivity, status=discord.Status.do_not_disturb)
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
