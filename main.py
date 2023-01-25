@@ -22,7 +22,7 @@ async def ping(ctx):
 
 @bot.command()
 async def NITRO(ctx):
-    if ctx.channel id == '1067490336177397780':
+    if ctx.channel.id == '1067490336177397780':
       nitro = "".join(random.choices(letters, k=16))
       link = 'discord.gift/' + nitro
       embed_nitro = discord.Embed(title='Pomyślnie wygenerowano Discord Nitro!', description='Twój kod: ||' + link + '||')
